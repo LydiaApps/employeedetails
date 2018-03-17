@@ -1,0 +1,44 @@
+package com.lydia.employeedetail.service;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
+import com.lydia.employeedetail.domain.EmployeeData;
+import com.lydia.employeedetail.domain.EmployeeDetails;
+import com.lydia.employeedetail.domain.Employees;
+import com.lydia.employeedetail.mongo.MongoService;
+import com.lydia.employeedetail.util.Utility;
+
+@Service
+public class StartUp implements  ApplicationRunner {
+	@Autowired
+	MongoService mongoService;
+	private static final Logger LOGGER= LoggerFactory.getLogger(StartUp.class);
+
+	@Override
+    public void run(ApplicationArguments applicationArguments) throws Exception {
+		String jsonData;
+		try {
+			jsonData = Utility.readFile("src/main/resources/employeedata.Json",StandardCharsets.UTF_8);
+			EmployeeData employeeData = new Gson().fromJson(jsonData,EmployeeData.class);
+			mongoService.bulkInsert(employeeData.getEmployeeData(), "employeeDetails");
+			LOGGER.info("Data Refreshed in mongo DB");
+		} catch (Exception e) {
+			LOGGER.error("Mongo DB Insert Failed:"+e.getMessage());
+		}
+
+    }
+	   
+
+}
