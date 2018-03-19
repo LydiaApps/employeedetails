@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: "This api is gets employee info from back end mongo DB and privide it to consumers"
+  description: "This api gets employee info/details from back end mongo DB and privide it to consumers"
   version: "1.0.0"
   title: "Employee Details API"
   termsOfService: "sample"

@@ -1,3 +1,4 @@
+Refere the employeedetails.yaml for cleaner view
 swagger: "2.0"
 info:
   description: "This api is gets employee info from back end mongo DB and privide it to consumers"
