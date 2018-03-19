@@ -17,13 +17,13 @@ public class EmployeeDetailsController {
 	@Autowired
 	private MongoService mongoService;
 	@RequestMapping("/employeedetail")
-	public EmployeeDetails employeeDetail(@RequestParam(value="id", defaultValue="none") String id) throws Exception {
+	public EmployeeDetails getEmployeeDetail(@RequestParam(value="id", defaultValue="none") String id) throws Exception {
 		return mongoService.getDetails(id);
 		
 		
 	}
 	@RequestMapping("/employeeinfo")
-	public List<EmployeeInfo> employeeInfo() throws Exception {
+	public List<EmployeeInfo> getEmployeeInfo() throws Exception {
 		return mongoService.getInfo();
 		
 		
