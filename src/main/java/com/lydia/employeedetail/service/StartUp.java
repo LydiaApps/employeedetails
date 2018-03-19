@@ -1,6 +1,5 @@
 package com.lydia.employeedetail.service;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import org.slf4j.Logger;
@@ -8,15 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.lydia.employeedetail.domain.EmployeeData;
-import com.lydia.employeedetail.domain.EmployeeDetails;
-import com.lydia.employeedetail.domain.Employees;
 import com.lydia.employeedetail.mongo.MongoService;
 import com.lydia.employeedetail.util.Utility;
 
